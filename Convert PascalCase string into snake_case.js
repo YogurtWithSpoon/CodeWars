@@ -1,6 +1,7 @@
 function toUnderscore(string){
     let split = String(string).replace(/(?=[A-Z])/g,'_')
-    return split.toLowerCase().slice(1,) == 0 ? String(string) : split.toLowerCase().slice(1,)
+    return string.toString().split(/(?=[A-Z])/).join("_").toLowerCase()
+    // return split.toLowerCase().slice(1,) == 0 ? String(string) : split.toLowerCase().slice(1,)
 }
 
 
@@ -8,7 +9,7 @@ function toUnderscore(string){
 //  returns test_controller
 console.log(toUnderscore('TestController'));
 
-// returns movies_and_books
+// returns movies_and_books 
 console.log(toUnderscore('MoviesAndBooks'));
 
 // returns app7_test
