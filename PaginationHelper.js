@@ -9,16 +9,20 @@ class PaginationHelper{
     pageCount(){
         return Math.ceil(this.collection.length/this.itemsPerPage)
     }
-    pageItemCount(page){
-        if(page < 0){
+    pageItemCount1(page){
+        if(page < 0 || page === undefined){
             return -1;
         }
         let powPage = page + 1;
         if(this.itemsPerPage*powPage - this.collection.length > 0){
-            if(this.itemsPerPage * powPage - this.collection.length >=6){
+            if(this.itemsPerPage * powPage - this.collection.length >=this.itemsPerPage){
                 return -1
             } else {
-                return this.itemsPerPage * powPage - this.collection.length
+                if(this.collection.length - this.itemsPerPage*powPage > 0){
+                    return this.itemsPerPage;
+                } else {
+                    return this.itemsPerPage + this.collection.length - this.itemsPerPage*powPage 
+                }
             }
         } else {
             return this.itemsPerPage
@@ -39,8 +43,4 @@ class PaginationHelper{
     }
 }
 
-var helper = new PaginationHelper(['a','b','c','d','e','f'], 4);
-console.log(helper.itemCount())
-console.log(helper.pageCount())
-console.log(helper.pageItemCount(-1))
-console.log(helper.pageIndex(1))
+var helper = new PaginationHelper(['a','b','c','d','e','f','d','f','6','6','6','6','6'], 4);
