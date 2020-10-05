@@ -12,7 +12,7 @@ class CaesarCipher {
   }
   
   isOver(code){
-    return code + this.shift > 90
+    return (code + this.shift > 90)
   }
 
   fromStartToEnd(code) {
@@ -23,18 +23,18 @@ class CaesarCipher {
     return String.fromCharCode(65 + (code + this.shift) - 90 - 1)
   }
 
-  shiftLetter(code){
-    String.fromCharCode(code - this.shift);
+  shiftLetter(code,direction){
+    return direction == "forward" ? String.fromCharCode(code + this.shift) : String.fromCharCode(code - this.shift)
   }
 
   decode(string) {
     const array = string.toUpperCase().split("").map((item) => {
         let code = item.charCodeAt();
         if (this.isSymbol(code)) {
-          if (this.isOver) {
+          if (this.isBelow(code)) {
             return this.fromStartToEnd(code);
           }
-          return this.shiftLetter(code)
+          return this.shiftLetter(code,'backward')
         }
         return item;
       });
@@ -42,16 +42,13 @@ class CaesarCipher {
   }
 
   encode(string) {
-    const array = string
-      .toUpperCase()
-      .split("")
-      .map((item) => {
+    const array = string.toUpperCase().split("").map((item) => {
         let code = item.charCodeAt();
         if (this.isSymbol(code)) {
-          if (code + this.shift > 90) {
+          if (this.isOver(code)) {
             return this.fromEndToStart(code)
           }
-          return this.shiftLetter
+          return this.shiftLetter(code,'forward')
         }
         return item;
       });
@@ -60,5 +57,5 @@ class CaesarCipher {
 }
 
 let password = new CaesarCipher(5);
-console.log(password.decode("BFKKQJX"));
-console.log(password.encode("Codewars"));
+console.log(password.decode("9E1Y"));
+console.log(password.encode("9Z1T"));
