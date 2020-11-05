@@ -1,15 +1,15 @@
-// function persistence(num) {
-//   let i = 0;
-//   while(String(num).length != 1){
-//     num = String(num).split('').reduce((prev,curr) => {
-//       return prev * curr
-//     },1)
-//     i++;
-//   }
-//   return i;
-// }
+function persistence(num) {
+  let i = 0;
+  while(String(num).length != 1){
+    num = String(num).split('').reduce((prev,curr) => {
+      return prev * curr
+    },1)
+    i++;
+  }
+  return i;
+}
 
-function persistence(num,counter = 0){
+function persistence1(num,counter = 0){
   function power(number){
     return String(number).split('').reduce((prev,curr)=> {
       return prev * curr;
