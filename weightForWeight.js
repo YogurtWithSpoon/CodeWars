@@ -4,27 +4,12 @@ function orderWeight(strng) {
     let first = a.split('').reduce((prev,curr) => Number(prev) + Number(curr))
     let second = b.split('').reduce((prev,curr) => Number(prev) + Number(curr))
 
-    if(first < second){
-      return -1
-    }
-    if(first > second){
-      return 1
-    }
-    if(first === second){
-      if(a < b){
-        return -1
-      }
-      if(a > b){
-        return 1
-      }
-    }
+    return first - second || a > b || - (a < b)
   }).join(' ')
 }
 
 
 
 
-console.log(orderWeight("103 123 4444 99 2000")) 
-//"2000 103 123 4444 99")
-console.log(orderWeight("2000 10003 1234000 44444444 9999 11 11 22 123"))
-///11 11 2000 10003 22 123 1234000 44444444 9999")
+console.log(orderWeight('111 7 142 17 144 36 127 37 147 149 68 53064 104852 46155 429810 481335 352936 359714 435956 478447 389648')) 
+//'111 142 7 17 144 36 127 37 147 149 68 53064 104852 46155 429810 481335 352936 359714 435956 478447 389648'
