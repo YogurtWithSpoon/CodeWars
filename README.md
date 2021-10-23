@@ -1,5 +1,5 @@
 ## Solutions for CodeWars
-![alt text](https://github.com/YogurtWithSpoon/PicturesForProjects/blob/master/CodeWars.png?raw=true)
+![alt text](https://www.codewars.com/users/YogurtWithSpoon/badges/large)
 
-[Link profile](codewars.com/users/YogurtWithSpoon)
+[Link profile](https://codewars.com/users/YogurtWithSpoon)
 
